@@ -1,0 +1,9 @@
+fastapi
+uvicorn
+python-jose[cryptography]
+passlib[bcrypt]
+redis
+httpx
+mutagen
+faststream[rabbit]
+dotenv
