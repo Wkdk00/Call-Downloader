@@ -50,3 +50,30 @@ services:
       - "5672:5672"
     networks:
       - dev
+
+  pg:
+    image: postgres
+    environment:
+      POSTGRES_DB: test
+      POSTGRES_USER: autooptcall
+      POSTGRES_PASSWORD: autooptcall
+    ports:
+      - "5432:5432"
+    networks:
+      - dev
+
+  prometheus:
+    image: prom/prometheus:v2.43.0
+    restart: unless-stopped
+    ports:
+      - "9090:9090"
+    networks:
+      - dev
+
+  grafana:
+    image: grafana/grafana:9.4.7
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    networks:
+      - dev

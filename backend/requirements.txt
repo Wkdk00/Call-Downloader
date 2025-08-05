@@ -8,3 +8,7 @@ mutagen
 faststream[rabbit]
 dotenv
 python-multipart
+sqlalchemy
+alembic
+psycopg2-binary
+prometheus-fastapi-instrumentator

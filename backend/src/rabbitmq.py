@@ -3,7 +3,9 @@ from faststream.rabbit.fastapi import RabbitRouter
 from faststream.rabbit import RabbitBroker
 import asyncio
 from src.schemas import CallData
+from src.database import db_dependency
 from src.redis import redis_client, store_in_redis
+from src.hand_download import download_and_store_file
 from src.control_page import add_received_file, get_hand_mode, get_accept_files
 
 router = RabbitRouter("amqp://guest:guest@rabbitmq:5672/")
@@ -35,15 +37,14 @@ async def add_data_in_rabbit(data: CallData):
         raise HTTPException(status_code=400, detail=str(e))
     
 @broker.subscriber("calls")
-async def receive_call_data(data: CallData):#, db: db_dependency):
+async def receive_call_data(data: CallData):
     if not get_accept_files():
         raise
 
     try:
         url = data.fileUrl + "/download"
         if get_hand_mode():
-            pass
-            #success = await download_and_store_file(url, data.callId, data.agentId, data.event_time, db)
+            success = await download_and_store_file(url, data.callId, data.agentId, data.event_time)
         else:
             success = await store_in_redis(url, data.callId, data.agentId, data.event_time, redis_client)
         filename = data.fileUrl.split("/")[-1]

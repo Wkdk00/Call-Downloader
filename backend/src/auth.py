@@ -1,3 +1,5 @@
+from src.database import db_dependency
+from src.models import User
 from fastapi import APIRouter, HTTPException, Depends
 from fastapi.security import OAuth2PasswordBearer
 from jose import jwt, JWTError
@@ -28,9 +30,9 @@ def create_access_token(data: dict):
     return jwt.encode(data, SECRET_KEY, algorithm=ALGORITHM)
 
 @router.post("/token")
-async def login(user_data: UserIn):
-    if (user_data.username != fake_user["username"] or 
-        not verify_password(user_data.password, fake_user["hashed_password"])):
+async def login(user_data: UserIn, db: db_dependency):
+    user = db.query(User).filter(User.username == user_data.username).first()
+    if not user or not verify_password(user_data.password, user.hashed_password):
         raise HTTPException(status_code=400, detail="Неверные данные")
     return {"access_token": create_access_token({"sub": user_data.username}), "token_type": "bearer"}
 
