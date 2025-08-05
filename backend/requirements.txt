@@ -7,3 +7,4 @@ httpx
 mutagen
 faststream[rabbit]
 dotenv
+python-multipart

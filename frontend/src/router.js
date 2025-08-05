@@ -5,9 +5,9 @@ import axios from 'axios'
 Vue.use(VueRouter)
 
 const routes = [
-  { path: '/', component: () => import('./views/Home.vue') },
   { path: '/about', component: () => import('./views/About.vue'), meta: { requiresAuth: true } },
   { path: '/control', component: () => import('./views/Control.vue'), meta: { requiresAuth: true } },
+  { path: '/auto_params', component: () => import('./views/AutoParams.vue'), meta: { requiresAuth: true } },
   { path: '/login', component: () => import('./views/Login.vue') },
 ]
 

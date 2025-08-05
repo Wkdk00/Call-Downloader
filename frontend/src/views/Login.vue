@@ -42,7 +42,7 @@ methods: {
       localStorage.setItem("token", response.data.access_token)
       this.message = "Успешный вход!";
       this.success = true;
-      setTimeout(() => this.$router.push('/about'), 1000);
+      setTimeout(() => this.$router.push('/control'), 1000);
     })
     .catch(error => {
       if(error.response) {
