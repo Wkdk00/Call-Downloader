@@ -37,7 +37,7 @@
       "dashes": false,
       "datasource": {
         "type": "prometheus",
-        "uid": "AxX7Lff4z"
+        "uid": "IiKSgmlNz"
       },
       "fill": 1,
       "fillGradient": 0,
@@ -85,7 +85,7 @@
           "$$hashKey": "object:140",
           "datasource": {
             "type": "prometheus",
-            "uid": "AxX7Lff4z"
+            "uid": "IiKSgmlNz"
           },
           "expr": "sum by (status) (rate(http_requests_total[1m]))",
           "format": "time_series",
@@ -135,7 +135,7 @@
       "dashes": false,
       "datasource": {
         "type": "prometheus",
-        "uid": "AxX7Lff4z"
+        "uid": "IiKSgmlNz"
       },
       "fill": 1,
       "fillGradient": 0,
@@ -183,7 +183,7 @@
           "$$hashKey": "object:766",
           "datasource": {
             "type": "prometheus",
-            "uid": "AxX7Lff4z"
+            "uid": "IiKSgmlNz"
           },
           "editorMode": "code",
           "expr": "sum(rate(http_requests_total{status=\"500\"}[30s]))",
@@ -234,7 +234,7 @@
       "dashes": false,
       "datasource": {
         "type": "prometheus",
-        "uid": "AxX7Lff4z"
+        "uid": "IiKSgmlNz"
       },
       "fill": 1,
       "fillGradient": 0,
@@ -276,9 +276,9 @@
           "$$hashKey": "object:638",
           "datasource": {
             "type": "prometheus",
-            "uid": "AxX7Lff4z"
+            "uid": "IiKSgmlNz"
           },
-          "expr": "process_resident_memory_bytes{job=\"booking\"}",
+          "expr": "process_resident_memory_bytes{job=\"backend\"}",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 1,
@@ -325,7 +325,7 @@
       "dashes": false,
       "datasource": {
         "type": "prometheus",
-        "uid": "AxX7Lff4z"
+        "uid": "IiKSgmlNz"
       },
       "fill": 1,
       "fillGradient": 0,
@@ -371,9 +371,9 @@
           "$$hashKey": "object:146",
           "datasource": {
             "type": "prometheus",
-            "uid": "AxX7Lff4z"
+            "uid": "IiKSgmlNz"
           },
-          "expr": "http_request_duration_seconds_sum{job=\"booking\",handler!=\"none\"} / http_request_duration_seconds_count",
+          "expr": "http_request_duration_seconds_sum{job=\"backend\",handler!=\"none\"} / http_request_duration_seconds_count",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 1,
@@ -423,7 +423,7 @@
       "dashes": false,
       "datasource": {
         "type": "prometheus",
-        "uid": "AxX7Lff4z"
+        "uid": "IiKSgmlNz"
       },
       "fill": 1,
       "fillGradient": 0,
@@ -469,7 +469,7 @@
           "$$hashKey": "object:1079",
           "datasource": {
             "type": "prometheus",
-            "uid": "AxX7Lff4z"
+            "uid": "IiKSgmlNz"
           },
           "expr": "increase(http_request_duration_seconds_bucket{le=\"0.1\"}[1m]) \n/ ignoring (le) increase(http_request_duration_seconds_count[1m])",
           "format": "time_series",
@@ -521,7 +521,7 @@
       "dashes": false,
       "datasource": {
         "type": "prometheus",
-        "uid": "AxX7Lff4z"
+        "uid": "IiKSgmlNz"
       },
       "fill": 1,
       "fillGradient": 0,
@@ -563,9 +563,9 @@
           "$$hashKey": "object:638",
           "datasource": {
             "type": "prometheus",
-            "uid": "AxX7Lff4z"
+            "uid": "IiKSgmlNz"
           },
-          "expr": "rate(process_cpu_seconds_total{job=\"booking\"}[30s])",
+          "expr": "rate(process_cpu_seconds_total{job=\"backend\"}[30s])",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 1,
@@ -635,7 +635,7 @@
     ]
   },
   "timezone": "",
-  "title": "FastAPI Дашборд - Бронирование отелей",
+  "title": "Call Downloader",
   "uid": "_eX4mpl312",
   "version": 9,
   "weekStart": ""

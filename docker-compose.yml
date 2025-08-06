@@ -69,11 +69,21 @@ services:
       - "9090:9090"
     networks:
       - dev
+    volumes:
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml
+      - prometheusdata:/prometheus
 
   grafana:
-    image: grafana/grafana:9.4.7
+    image: grafana/grafana:latest
     restart: unless-stopped
-    ports:
-      - "3000:3000"
+    environment:
+      - GF_SERVER_ROOT_URL=%(protocol)s://%(domain)s:%(http_port)s/grafana
+      - GF_SERVER_SERVE_FROM_SUB_PATH=true
+    volumes:
+      - grafanadata:/var/lib/grafana
     networks:
       - dev
+
+volumes:
+  prometheusdata:
+  grafanadata:
