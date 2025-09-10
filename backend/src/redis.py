@@ -33,6 +33,7 @@ async def send_and_clean_redis(redis_client, call_id: str, date: str, agent: str
         data = redis_client.get(call_id)
         file_data = json.loads(data)
         url = "https://cxmonline.ru/service/responder"
+        ai_url = "https://httpbin.org/post"
         params = get_auto_params()
         data = {
             "LoginName": "autoopt-call-robot",
@@ -64,7 +65,8 @@ async def send_and_clean_redis(redis_client, call_id: str, date: str, agent: str
 
         async with AsyncClient(timeout=30.0) as client:
             response = await client.post(url, data=data, files=files, headers=headers)
-            if response.status_code == 200 and response.text.split()[1] == "000":
+            airesponse = await client.post(ai_url, data=data, files=files, headers=headers)
+            if response.status_code == 200 and response.text.split()[1] == "000" and airesponse.status_code == 200:
                 print(f"Successfully sent file {call_id}")
                 redis_client.delete(call_id)
                 return True
