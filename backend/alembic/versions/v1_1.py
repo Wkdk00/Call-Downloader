@@ -8,6 +8,8 @@ Create Date: 2025-06-26 13:31:27.610922
 from typing import Sequence, Union
 from passlib.context import CryptContext
 from sqlalchemy.sql import table, column
+from dotenv import load_dotenv
+import os
 
 from alembic import op
 import sqlalchemy as sa
@@ -22,6 +24,11 @@ depends_on: Union[str, Sequence[str], None] = None
 bcrypt_context = CryptContext(schemes=['bcrypt'], deprecated='auto')
 
 def upgrade() -> None:
+    load_dotenv()
+
+    username = os.getenv("USERNAME")
+    password = os.getenv("PASSWORD")
+    
     users_table = table(
         'users',
         column('username', sa.String),
@@ -30,14 +37,12 @@ def upgrade() -> None:
 
     op.execute(users_table.delete())
 
-    # Хешируем пароль
-    hashed_password = bcrypt_context.hash("123")  # Замените на надежный пароль
+    hashed_password = bcrypt_context.hash(password)
 
-    # Вставляем пользователя
     op.bulk_insert(
         users_table,
         [
-            {"username": "autoopt-call-robot", "hashed_password": hashed_password}
+            {"username": username, "hashed_password": hashed_password}
         ]
     )
 
