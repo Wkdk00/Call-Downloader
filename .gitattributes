@@ -1,1 +1,8 @@
-frontend/** linguist-detectable=true
+# Указываем, что всю папку frontend нужно считать "сторонним кодом" (vendored)
+# Это полностью исключит ее из расчета статистики языка репозитория.
+frontend/** linguist-vendored
+
+# (Опционально, но рекомендуется) Явно указываем, что все .py файлы - это детектируемый Python
+*.py linguist-detectable=true
+# (Опционально) Сообщаем лингисту, что нужно принудительно считать .py файлы Python'ом
+*.py linguist-language=Python
