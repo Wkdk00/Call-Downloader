@@ -1,4 +1,9 @@
 # Call Downloader
+[![Python](https://img.shields.io/badge/Python-3.11+-blue.svg)](https://python.org)
+[![FastAPI](https://img.shields.io/badge/FastAPI-0.104+-green.svg)](https://fastapi.tiangolo.com)
+[![LangGraph](https://img.shields.io/badge/LangGraph-0.6+-purple.svg)](https://github.com/langchain-ai/langgraph)
+[![OpenAI](https://img.shields.io/badge/OpenAI-GPT--4o--mini-orange.svg)](https://openai.com)
+[![Docker](https://img.shields.io/badge/Docker-Ready-blue.svg)](https://docker.com)
 Проект call_downloader выступает как микросервис-прокладка и интеграционный уровень между двумя бизнес-системами и отдельным микросервисом с искусственным интеллектом. Он обеспечивает:
 - Приём и обработку аудиофайлов от одного бизнес-приложения
 - Надёжное хранение и асинхронную обработку данных
